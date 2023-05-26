@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SettingWindow</class>
+ <widget class="QMainWindow" name="SettingWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>723</width>
+    <height>517</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Мониторинг уровня топлива</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QLabel {
+    color: #333;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+QLineEdit {
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    padding: 6px;
+    background-color: #f5f5f5;
+    color: #333;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+
+QLineEdit:focus {
+    border-color: #4D90FE;
+    border-width: 2px;
+}
+
+QTextEdit {
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    padding: 6px;
+    background-color: #f5f5f5;
+    color: #333;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+
+QTextEdit:focus {
+    border-color: #4D90FE;
+    border-width: 2px;
+}
+
+QPushButton {
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    padding: 6px 12px;
+    background-color: #f5f5f5;
+    color: #333;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+}
+
+QPushButton:hover {
+    background-color: #e6e6e6;
+}
+
+QPushButton:pressed {
+    background-color: #d9d9d9;
+    border-color: #AAA;
+}
+
+
+
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(245, 245, 245)</string>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_4">
+    <item>
+     <spacer name="horizontalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>10</width>
+        <height>2</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+    color: #333;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+	font-weight: bold;
+}</string>
+        </property>
+        <property name="text">
+         <string>Формирование отчёта</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="Line" name="line">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>25</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    color: #333;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+}</string>
+          </property>
+          <property name="text">
+           <string>Метод анализа работы датчика:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="boxOfMethods">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>290</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QComboBox {
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    padding: 6px;
+    background-color: #f5f5f5;
+    color: #333;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+}
+
+QComboBox:focus {
+    border-color: #4D90FE;
+    border-width: 2px;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 20px;
+    border-left-width: 1px;
+    border-left-color: #CCC;
+    border-left-style: solid;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #FFF;
+    border: 1px solid #CCC;
+    selection-background-color: #4D90FE;
+    selection-color: #FFF;
+}
+
+QComboBox QPushButton {
+    border: none;
+    background-color: transparent;
+    image: url(:/icons/arrow.png);
+    width: 16px;
+    height: 16px;
+}
+</string>
+          </property>
+          <item>
+           <property name="text">
+            <string>LSTM </string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Совместная работа алгоритмов</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>МНК</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Isolation Forest</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>KNN</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>DBSCAN</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="manualMethod">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>40</width>
+            <height>35</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color: rgb(129, 129, 129);
+    border: 1px solid #CCCCCC;
+    color: rgb(243, 243, 243);
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    border-radius: 4px;
+}
+
+QPushButton:hover {
+    background-color: #e6e6e6;
+}
+
+QPushButton:pressed {
+    background-color: #d9d9d9;
+    border-color: #AAAAAA;
+}
+
+</string>
+          </property>
+          <property name="text">
+           <string>?</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    color: #333;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+}</string>
+          </property>
+          <property name="text">
+           <string>Сформировать отчёт за день</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QDateEdit" name="dateChoose">
+          <property name="styleSheet">
+           <string notr="true">QDateEdit {
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    padding: 6px;
+    background-color: #f5f5f5;
+    color: #333;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+}
+
+QDateEdit:focus {
+    border-color: #4D90FE;
+    border-width: 2px;
+}
+
+QDateEdit::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 20px;
+    border-left-width: 1px;
+    border-left-color: #CCC;
+    border-left-style: solid;
+}
+
+QDateEdit QAbstractItemView {
+    background-color: #FFF;
+    border: 1px solid #CCC;
+    selection-background-color: #4D90FE;
+    selection-color: #FFF;
+}
+
+QDateEdit QPushButton {
+    border: none;
+    background-color: transparent;
+    image: url(:/icons/calendar.png);
+    width: 16px;
+    height: 16px;
+}
+</string>
+          </property>
+          <property name="dateTime">
+           <datetime>
+            <hour>0</hour>
+            <minute>0</minute>
+            <second>0</second>
+            <year>2022</year>
+            <month>3</month>
+            <day>1</day>
+           </datetime>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="verticalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>13</width>
+          <height>35</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QLabel" name="label_4">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    color: #333;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+	font-weight: bold;
+}
+</string>
+          </property>
+          <property name="text">
+           <string>Дополнительные настройки:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_5">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>0</width>
+            <height>10</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="check_dut">
+          <property name="styleSheet">
+           <string notr="true">QCheckBox {
+    color: #333;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+}
+
+QCheckBox::indicator {
+    width: 20px;
+    height: 20px;
+}
+
+QCheckBox::indicator:unchecked {
+    border: 1px solid #CCC;
+    background-color: #FFF;
+}
+
+QCheckBox::indicator:checked {
+    border: 1px solid #4D90FE;
+    background-color: #4D90FE;
+}
+
+QCheckBox::indicator:checked:disabled {
+    border: 1px solid #AAA;
+    background-color: #AAA;
+}
+
+QCheckBox::indicator:unchecked:disabled {
+    border: 1px solid #AAA;
+    background-color: #FFF;
+}
+</string>
+          </property>
+          <property name="text">
+           <string>Сформировать отчёт по расходу топлива</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_7">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>5</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="check_delta_dut">
+          <property name="styleSheet">
+           <string notr="true">QCheckBox {
+    color: #333;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+}
+
+QCheckBox::indicator {
+    width: 20px;
+    height: 20px;
+}
+
+QCheckBox::indicator:unchecked {
+    border: 1px solid #CCC;
+    background-color: #FFF;
+}
+
+QCheckBox::indicator:checked {
+    border: 1px solid #4D90FE;
+    background-color: #4D90FE;
+}
+
+QCheckBox::indicator:checked:disabled {
+    border: 1px solid #AAA;
+    background-color: #AAA;
+}
+
+QCheckBox::indicator:unchecked:disabled {
+    border: 1px solid #AAA;
+    background-color: #FFF;
+}
+</string>
+          </property>
+          <property name="text">
+           <string>Cформировать отчёт по заправкам и сливам топлива</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_6">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>5</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="check_run">
+          <property name="styleSheet">
+           <string notr="true">QCheckBox {
+    color: #333;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+}
+
+QCheckBox::indicator {
+    width: 20px;
+    height: 20px;
+}
+
+QCheckBox::indicator:unchecked {
+    border: 1px solid #CCC;
+    background-color: #FFF;
+}
+
+QCheckBox::indicator:checked {
+    border: 1px solid #4D90FE;
+    background-color: #4D90FE;
+}
+
+QCheckBox::indicator:checked:disabled {
+    border: 1px solid #AAA;
+    background-color: #AAA;
+}
+
+QCheckBox::indicator:unchecked:disabled {
+    border: 1px solid #AAA;
+    background-color: #FFF;
+}
+</string>
+          </property>
+          <property name="text">
+           <string>Cформировать отчёт по пробегу и моточасам</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="verticalSpacer_8">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>30</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="reset_button">
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color: #f5f5f5;
+    border: 1px solid #CCCCCC;
+    color: #333333;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    border-radius: 4px;
+}
+
+QPushButton:hover {
+    background-color: #e6e6e6;
+}
+
+QPushButton:pressed {
+    background-color: #d9d9d9;
+    border-color: #AAAAAA;
+}
+</string>
+          </property>
+          <property name="text">
+           <string>Сбросить настройку</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="report_button">
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color: #f5f5f5;
+    border: 1px solid #CCCCCC;
+    color: #333333;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    border-radius: 4px;
+}
+
+QPushButton:hover {
+    background-color: #e6e6e6;
+}
+
+QPushButton:pressed {
+    background-color: #d9d9d9;
+    border-color: #AAAAAA;
+}
+</string>
+          </property>
+          <property name="text">
+           <string>Сформировать отчёт</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <spacer name="horizontalSpacer_3">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>10</width>
+        <height>5</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
