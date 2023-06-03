@@ -317,7 +317,7 @@ QPushButton:pressed {
 </string>
                    </property>
                    <property name="text">
-                    <string>Выбросы в кажой поездке:</string>
+                    <string>Выбросы в каждой поездке:</string>
                    </property>
                   </widget>
                  </item>

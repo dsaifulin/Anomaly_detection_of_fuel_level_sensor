@@ -31,6 +31,10 @@ def enjection_filter(X, Y, rejection_list, k):
     
     return X_after, Y_after, enjections
     
+def least_squares(x, y, order):
+    coefficients = np.polyfit(x, y, order)
+    approximated_y = np.polyval(coefficients, x)
+    return approximated_y
 
 #заполнение квадратной матрицы и столбца свободных членов
 def readmatrix(X, Y, ap, n):
